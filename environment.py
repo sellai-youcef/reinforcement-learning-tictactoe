@@ -39,6 +39,3 @@ class TicTacToe:
 if __name__=="__main__":
     game=TicTacToe()
     game.print_board()
-    game.step(0)
-    game.step(4)
-    game.print_board()
