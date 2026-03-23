@@ -1,5 +1,6 @@
 from environment import TicTacToe
 from agent import Agent
+import pickle
 
 def train(episodes=50000):
     env = TicTacToe()
@@ -15,7 +16,12 @@ def train(episodes=50000):
             next_actions = env.get_available_actions()
             agent.update(state, action, reward, next_state, next_actions, done)
             state = next_state
+    
+    with open("qtable.pkl", "wb") as f:
+        pickle.dump(agent.q_table, f)
+    print("q table is saved")
     return agent
+
 
 if __name__ =="__main__":
     trained_agent = train()
