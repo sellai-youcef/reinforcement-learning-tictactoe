@@ -1,4 +1,5 @@
 import random
+import pickle
 
 class Agent:
     def __init__(self):
@@ -33,3 +34,12 @@ class Agent:
         self.q_table[state][action] = new_q
         
         self.epsilon = max(self.epsilon_min, self.epsilon*self.epsilon_decay) 
+
+    def load_q_table(self, file_path):
+        try:
+            with open(file_path, "rb") as f:
+                self.q_table = pickle.load(f)
+            self.epsilon = self.epsilon_min
+            print(f"Loaded{len(self.q_table)} states from {file_path}")
+        except FileNotFoundError:
+            print("no saved q-table found. start from scratch")
