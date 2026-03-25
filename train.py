@@ -2,7 +2,7 @@ from environment import TicTacToe
 from agent import Agent
 import pickle
 
-def train(episodes=50000):
+def train(episodes=1000000):
     env = TicTacToe()
     agent = Agent()
 
